@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Domain Transformer | Net Utility Suite</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="../scripts/layout.js" defer></script>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main class="section">
+        <h2 class="section-header">Domain Transformer</h2>
+        <div class="tool_description">
+            <details>
+                <summary class="tool_description_summary">Show Description</summary>
+                <br>
+            Uses concatenation logic to add and remove protocols, subdomains, directories, and other prefixes/suffixes to and from domains or URLs.<br><br>
+            Remove rules run after Add rules, so if you are both adding and removing http://, you'll only end up removing it.
+            </details>
+        </div>
+        <textarea class="user-input" id="domainInput" rows="10" cols="80" placeholder="Enter one domain or URL per line"></textarea>
+
+        <br>
+
+        <div class="columns" style="grid-template-columns: 1fr 2fr 1fr;">
+
+            <!-- Add to Input Column -->
+            <div class="column" id="addSection">
+                <h4>Add to Input</h4>
+                <label for="selectAllAddBtn">
+                    <button type="button" id="selectAllAddBtn" class="button-2">Select All Common</button>
+                </label><br>
+
+                <label for="prependHttp" class="checkbox_label">
+                    <input type="checkbox" id="prependHttp">
+                    Protocol if missing - http://
+                </label><br>
+
+                <label for="prependHttps" class="checkbox_label">
+                    <input type="checkbox" id="prependHttps">
+                    Protocol if missing - https://
+                </label><br>
+
+                <label for="addWww" class="checkbox_label">
+                    <input type="checkbox" id="addWww">
+                    "www." if missing
+                </label><br>
+
+                <label for="addPrefix" class="checkbox_label">
+                    <input type="checkbox" id="addPrefix">
+                    Custom prefix:
+                    <input type="text" id="prefixText" placeholder="Enter prefix">
+                </label><br>
+
+                <label for="addSuffix" class="checkbox_label">
+                    <input type="checkbox" id="addSuffix">
+                    Custom suffix:
+                    <input type="text" id="suffixText" placeholder="Enter suffix">
+                </label><br>
+            </div>
+
+            <!-- Remove from Input Column -->
+            <div class="column" id="removeSection">
+                <h4>Remove from Input</h4>
+                <label for="selectAllRemoveBtn">
+                    <button type="button" id="selectAllRemoveBtn" class="button-2">Select All Common</button>
+                </label><br>
+
+                <label for="removeProtocol" class="checkbox_label">
+                    <input type="checkbox" id="removeProtocol">
+                    Protocol (http:// or https://)
+                </label><br>
+
+                <label for="removeWww" class="checkbox_label">
+                    <input type="checkbox" id="removeWww">
+                    "www."
+                </label><br>
+
+                <label for="removeSubdomains" class="checkbox_label">
+                    <input type="checkbox" id="removeSubdomains">
+                    Subdomains (www.subdomain.example.com → example.com)
+                </label><br>
+                <ul style="list-style-type: none; font-size: 0.75em; margin-left: 2em; margin-top: 0em; margin-bottom: 0em;">
+                    <li style="margin: 0;">
+                        <span style="color: gold; font-weight: bold;">*</span>
+                        <label for="customCcTLD" class="checkbox_label">
+                            Custom ccTLD to watch out for (backup in case your TLD isn't already covered)
+                            <input type="text" id="customCcTLD" placeholder="e.g., za" style="font-size: 0.75em;" disabled>
+                        </label><br>
+                    </li>
+                </ul>
+
+
+                <label for="removeDirectories" class="checkbox_label">
+                    <input type="checkbox" id="removeDirectories">
+                    Directories (the trailing "/" and everything after it)
+                </label><br>
+
+                <label for="removeQuery" class="checkbox_label">
+                    <input type="checkbox" id="removeQuery">
+                    Query strings and fragments (?query=..., #fragment)
+                </label><br>
+
+                <label for="keepOnlyTLD" class="checkbox_label">
+                    <input type="checkbox" id="keepOnlyTLD">
+                    Everything but the TLD (including multi-part like co.uk)
+                </label>
+                <ul style="list-style-type: none; font-size: 0.75em; margin-left: 2em; margin-top: 0em; margin-bottom: 0em;">
+                    <li style="margin: 0;">
+                        <span style="color: gold; font-weight: bold;">*</span>
+                        <label for="customCcTLD_keepOnlyTLD" class="checkbox_label">
+                            Custom ccTLD to watch out for (backup in case your TLD isn't already covered)
+                            <input type="text" id="customCcTLD_keepOnlyTLD" placeholder="e.g., za" style="font-size: 0.75em;" disabled>
+                        </label><br>
+                    </li>
+                </ul>
+
+                <label for="removePrefix" class="checkbox_label">
+                    <input type="checkbox" id="removePrefix">
+                    Custom prefix:
+                    <input type="text" id="removePrefixText" placeholder="Enter prefix">
+                </label><br>
+
+                <label for="removeSuffix" class="checkbox_label">
+                    <input type="checkbox" id="removeSuffix">
+                    Custom suffix:
+                    <input type="text" id="removeSuffixText" placeholder="Enter suffix">
+                </label><br>
+            </div>
+        </div>
+
+        <br>
+
+        <button onclick="runTransformData()">Transform Data</button>
+
+        <br>
+
+        <button id="exportCsvBtn" style="display:none;">Export as CSV</button>
+
+        <br>
+
+        <button id="copyAllBtn" style="display:none;">Copy All Transformed</button>
+
+        <br>
+        <!-- Table to display results -->
+        <table id="resultsTable" style="display:none;">
+            <thead>
+            <tr>
+                <th>Input Data</th>
+                <th>Transformed Data</th>
+            </tr>
+            </thead>
+            <tbody></tbody>
+        </table><br>
+
+        <script src="../scripts/domain_transformer.js"></script>
+    </main>
+
+    <footer id="site-footer"></footer>
+</body>
+</html>

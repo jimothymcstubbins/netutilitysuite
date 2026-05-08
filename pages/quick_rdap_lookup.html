@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Quick RDAP Lookup</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="icon" href="../assets/favicon.ico">
+</head>
+<body>
+    <h1><a href="../index.html" style="text-decoration: none; color: inherit">RiskRecon Operations Team Tools Portal</a></h1>
+
+    <div class="section">
+        <h2>Quick RDAP Lookup</h2>
+        <div class="tool_description">
+            <details>
+                <summary class="tool_description_summary">Show Description</summary>
+                <p>
+                    Extracts the TLD from a domain you input and uses <a href="https://data.iana.org/rdap/dns.json" target="_blank">https://data.iana.org/rdap/dns.json</a> to find its domain registry. From the registry, extracts the domain's registrar.<br><br>
+                    Sends a lookup request to the registrar, falling back to the registry if the registrar returns no usable data, then parses the received data to extract the following:
+                    <ul style="list-style-type: circle; margin-left: 1.5em;">
+                        <li>Registrant Name(fn), Org, Address, Email</0li>
+                        <li>Administrative Name(fn), Org, Address, Email</li>
+                        <li>Technical Name(fn), Org, Address, Email</li>
+                        <li>Registrar Name</li>
+                        <li>Dates - Created On, Expiration, Updated On</li>
+                        <li>Nameservers</li>
+                    </ul>
+                    <strong>Please note:</strong> IANA only has RDAP information for TLD registries who provide information to IANA. Any registry IANA doesn't have information about will return an error.<br>
+                    <strong>Also note:</strong> While RDAP formats are standardized, not every registrar follows them the same way. Certain TLDs will return no information here because of parsing issues. Use the <a href="../pages/full_rdap_lookup.html">Full RDAP Lookup</a> for these.
+                </p>
+            </details>
+        </div>
+        <input type="text" id="domain" placeholder="Enter domain (e.g., example.com)" style="width: 400px;" />
+        <button onclick="runRDAP()">Lookup</button>
+        <pre id="output"></pre>
+
+        <script src="../scripts/quick_rdap_lookup.js"></script>
+    </div>
+</body>
+</html>

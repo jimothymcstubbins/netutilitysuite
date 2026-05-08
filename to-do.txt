@@ -1,0 +1,7 @@
+Combine quick and full RDAP into a single tool
+Fix headers/footers of all tools
+Flesh out CSS of whole site
+Integrate Google AdSense
+Purchase Domain
+Publish
+Create other tools whenever possible
