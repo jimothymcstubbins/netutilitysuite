@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <title>Quick RDAP Lookup</title>
-    <link rel="stylesheet" href="/netutilitysuite/styles/styles.css">
-    <link rel="icon" href="/netutilitysuite/assets/favicon.ico">
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="../scripts/path-fixer.js"></script>
 </head>
 <body>
-    <h1><a href="/netutilitysuite/index.html" style="text-decoration: none; color: inherit">RiskRecon Operations Team Tools Portal</a></h1>
+    <h1><a href="../index.html" style="text-decoration: none; color: inherit">RiskRecon Operations Team Tools Portal</a></h1>
 
     <div class="section">
         <h2>Quick RDAP Lookup</h2>
@@ -26,7 +27,7 @@
                         <li>Nameservers</li>
                     </ul>
                     <strong>Please note:</strong> IANA only has RDAP information for TLD registries who provide information to IANA. Any registry IANA doesn't have information about will return an error.<br>
-                    <strong>Also note:</strong> While RDAP formats are standardized, not every registrar follows them the same way. Certain TLDs will return no information here because of parsing issues. Use the <a href="/netutilitysuite/pages/full_rdap_lookup.html">Full RDAP Lookup</a> for these.
+                    <strong>Also note:</strong> While RDAP formats are standardized, not every registrar follows them the same way. Certain TLDs will return no information here because of parsing issues. Use the <a href="../pages/full_rdap_lookup.html">Full RDAP Lookup</a> for these.
                 </p>
             </details>
         </div>
@@ -34,7 +35,7 @@
         <button onclick="runRDAP()">Lookup</button>
         <pre id="output"></pre>
 
-        <script src="/netutilitysuite/scripts/quick_rdap_lookup.js"></script>
+        <script src="../scripts/quick_rdap_lookup.js"></script>
     </div>
 </body>
 </html>
