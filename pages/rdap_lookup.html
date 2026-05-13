@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RDAP Lookup | Net Utility Suite</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="../scripts/path-fixer.js"></script>
+    <script src="../scripts/layout.js" defer></script>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main class="section">
+        <h2 class="section-header">RDAP Lookup</h2>
+        
+        <div class="tool_description">
+            <details>
+                <summary class="tool_description_summary">Show Description</summary>
+                <br>
+                Extracts the TLD from a domain and uses <a href="https://data.iana.org/rdap/dns.json" target="_blank">IANA's RDAP bootstrap</a> to find the domain registry. Queries both registry and registrar RDAP endpoints to provide comprehensive domain registration data.<br><br>
+                <strong>Quick Mode:</strong> Shows parsed contact information, dates, and nameservers in a readable format.<br>
+                <strong>Full Mode:</strong> Displays the complete raw RDAP JSON response for advanced analysis.<br><br>
+                <strong>Please note:</strong> IANA only has information for registrars who use RDAP. Some registrars may not return complete data.
+            </details>
+        </div>
+
+        <div class="input-section">
+            <label for="domain"><strong>Domain:</strong></label>
+            <input type="text" id="domain" placeholder="Enter domain (e.g., example.com)" class="user-input" style="width: 300px;" />
+            
+            <div class="mode-selector" style="margin-top: 15px;">
+                <label class="radio_label">
+                    <input type="radio" name="mode" value="quick" checked>
+                    Quick Lookup (Parsed Data)
+                </label>
+                <label class="radio_label">
+                    <input type="radio" name="mode" value="full">
+                    Full Lookup (Raw JSON)
+                </label>
+            </div>
+            
+            <button id="lookupBtn" style="margin-top: 15px;">Lookup Domain</button>
+        </div>
+
+        <div id="output-container" style="display: none; margin-top: 20px;">
+            <div class="output-header">
+                <h3>Results</h3>
+                <div class="output-actions">
+                    <button id="copyBtn" style="display: none;">Copy Results</button>
+                    <button id="downloadBtn" style="display: none;">Download JSON</button>
+                </div>
+            </div>
+            <pre id="output" class="output-box"></pre>
+        </div>
+
+        <script src="../scripts/rdap_lookup.js"></script>
+    </main>
+
+    <footer id="site-footer"></footer>
+</body>
+</html>

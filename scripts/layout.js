@@ -24,8 +24,9 @@ document.getElementById("site-header").innerHTML = `
       <ul class="nav-links">
         <li><a href="${basePath}/index.html">Home</a></li>
         <li><a href="${basePath}/pages/bulk_url_opener.html">Bulk URL Opener</a></li>
-        <li><a href="${basePath}/pages/full_rdap_lookup.html">RDAP Lookup</a></li>
+        <li><a href="${basePath}/pages/rdap_lookup.html">RDAP Lookup</a></li>
         <li><a href="${basePath}/pages/domain_transformer.html">Domain Transformer</a></li>
+        <li><a href="${basePath}/pages/dns_lookup.html">DNS Lookup</a></li>
       </ul>
     </nav>
   </header>

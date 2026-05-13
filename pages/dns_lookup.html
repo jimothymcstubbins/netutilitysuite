@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNS Lookup | Net Utility Suite</title>
+    <link rel="stylesheet" href="../styles/styles.css">
+    <link rel="icon" href="../assets/favicon.ico">
+    <script src="../scripts/path-fixer.js"></script>
+    <script src="../scripts/layout.js" defer></script>
+</head>
+<body>
+    <header id="site-header"></header>
+
+    <main class="section">
+        <h2 class="section-header">DNS Lookup</h2>
+        
+        <div class="tool_description">
+            <details>
+                <summary class="tool_description_summary">Show Description</summary>
+                <br>
+                Resolve DNS records for any domain. Supports multiple record types including A, AAAA, MX, TXT, CNAME, NS, SOA, and more.<br><br>
+                <strong>Instructions:</strong><br>
+                <ol>
+                    <li>Enter a domain name (e.g., example.com)</li>
+                    <li>Select the DNS record type(s) you want to query</li>
+                    <li>Click "Lookup DNS" to resolve the records</li>
+                </ol>
+                <strong>Note:</strong> This tool uses public DNS-over-HTTPS (DoH) services for privacy and security.
+            </details>
+        </div>
+
+        <div class="input-section">
+            <label for="domain"><strong>Domain:</strong></label>
+            <input type="text" id="domain" placeholder="Enter domain (e.g., example.com)" class="user-input" style="width: 300px;" />
+            
+            <div class="record-selector" style="margin-top: 15px;">
+                <label><strong>Record Types:</strong></label>
+                <div class="checkbox-grid">
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-a" checked>
+                        A (IPv4 Address)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-aaaa" checked>
+                        AAAA (IPv6 Address)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-mx" checked>
+                        MX (Mail Exchange)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-txt" checked>
+                        TXT (Text Record)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-cname">
+                        CNAME (Canonical Name)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-ns">
+                        NS (Name Server)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-soa">
+                        SOA (Start of Authority)
+                    </label>
+                    <label class="checkbox_label">
+                        <input type="checkbox" id="record-caa">
+                        CAA (Certificate Authority)
+                    </label>
+                </div>
+            </div>
+            
+            <div class="dns-server-selector" style="margin-top: 15px;">
+                <label><strong>DNS Server:</strong></label>
+                <select id="dns-server" class="user-input" style="width: 200px;">
+                    <option value="cloudflare">Cloudflare (1.1.1.1)</option>
+                    <option value="google">Google (8.8.8.8)</option>
+                    <option value="quad9">Quad9 (9.9.9.9)</option>
+                    <option value="opendns">OpenDNS (208.67.222.222)</option>
+                </select>
+            </div>
+            
+            <button id="lookupBtn" style="margin-top: 15px;">Lookup DNS</button>
+        </div>
+
+        <div id="output-container" style="display: none; margin-top: 20px;">
+            <div class="output-header">
+                <h3>DNS Results</h3>
+                <div class="output-actions">
+                    <button id="copyBtn">Copy Results</button>
+                    <button id="downloadBtn">Download JSON</button>
+                </div>
+            </div>
+            <div id="output" class="output-box"></div>
+        </div>
+
+        <script src="../scripts/dns_lookup.js"></script>
+    </main>
+
+    <footer id="site-footer"></footer>
+</body>
+</html>

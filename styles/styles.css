@@ -20,6 +20,7 @@
 /* ===========================
    GLOBAL STYLES
    =========================== */
+
 a {
   text-decoration: none !important;
 }
@@ -31,6 +32,36 @@ a:active,
 a:focus,
 a:any-link {
   text-decoration: none !important;
+}
+
+/* Content hyperlinks only - like "IANA's RDAP bootstrap" */
+.tool_description a {
+  color: var(--accent);
+  text-decoration: none;
+  transition: color 0.25s ease, text-decoration 0.25s ease;
+}
+
+.tool_description a:link {
+  color: var(--accent);
+}
+
+.tool_description a:visited {
+  color: var(--accent-dark);
+}
+
+.tool_description a:hover {
+  color: var(--accent-2);
+  text-decoration: underline;
+}
+
+.tool_description a:active {
+  color: var(--accent-3);
+}
+
+.tool_description a:focus {
+  color: var(--accent);
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 body {
